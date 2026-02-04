@@ -38,13 +38,11 @@ class ProfileCreateSchema(BaseModel):
             avatar=avatar,
         )
 
-
     @field_validator("first_name", "last_name")
     @classmethod
     def validate_name_field(cls, value: str) -> str:
         validate_name(value)
         return value.strip().lower()
-
 
     @field_validator("avatar")
     @classmethod
@@ -52,20 +50,17 @@ class ProfileCreateSchema(BaseModel):
         validate_image(avatar)
         return avatar
 
-
     @field_validator("gender")
     @classmethod
     def validate_gender_field(cls, gender: str) -> str:
         validate_gender(gender)
         return gender
 
-
     @field_validator("date_of_birth")
     @classmethod
     def validate_date_of_birth_field(cls, date_of_birth: date) -> date:
         validate_birth_date(date_of_birth)
         return date_of_birth
-
 
     @field_validator("info")
     @classmethod
